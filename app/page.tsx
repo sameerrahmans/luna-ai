@@ -59,10 +59,10 @@ export default function Home() {
   };
 
   const InputBox = (
-    <div className="w-full max-w-2xl mx-auto flex gap-3 items-center">
+    <div className="flex gap-3 items-center w-full min-w-0">
       <input
         ref={inputRef}
-        className="flex-1 border border-gray-300 rounded-lg px-5 py-3 text-base font-medium outline-none focus:border-[#0000FF] transition"
+        className="flex-1 min-w-0 border border-gray-300 rounded-lg px-5 py-3 text-base font-medium outline-none focus:border-[#0000FF] transition"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(e) => {
@@ -85,42 +85,44 @@ export default function Home() {
   return (
     <main className="min-h-[100dvh] bg-white flex flex-col">
       {messages.length === 0 ? (
-        <div className="flex flex-1 flex-col justify-center px-6">
-          <div className="flex flex-col items-center text-center gap-8">
+        <div className="flex flex-1 flex-col justify-center">
+          <div className="w-full max-w-2xl mx-auto px-4 flex flex-col items-center text-center gap-8">
             <h1 className="text-2xl sm:text-4xl font-medium tracking-tight text-gray-900">
               Where should we begin?
             </h1>
-            {InputBox}
+            <div className="w-full">{InputBox}</div>
           </div>
         </div>
       ) : (
         <>
-          <div className="flex-1 overflow-y-auto max-w-3xl w-full mx-auto px-4 py-10 space-y-6">
-            {messages.map((m, i) => (
-              <div
-                key={i}
-                className={`flex ${
-                  m.role === "user" ? "justify-end" : "justify-start"
-                }`}
-              >
+          <div className="flex-1 overflow-y-auto w-full">
+            <div className="max-w-3xl w-full mx-auto px-4 py-10 space-y-6">
+              {messages.map((m, i) => (
                 <div
-                  className={`px-5 py-3 text-base font-medium leading-relaxed rounded-lg max-w-[85%] sm:max-w-[70%] ${
-                    m.role === "user"
-                      ? "bg-[#0000FF] text-white"
-                      : "bg-gray-100 text-gray-900"
+                  key={i}
+                  className={`flex ${
+                    m.role === "user" ? "justify-end" : "justify-start"
                   }`}
                 >
-                  {m.text}
+                  <div
+                    className={`px-5 py-3 text-base font-medium leading-relaxed rounded-lg max-w-[85%] sm:max-w-[70%] ${
+                      m.role === "user"
+                        ? "bg-[#0000FF] text-white"
+                        : "bg-gray-100 text-gray-900"
+                    }`}
+                  >
+                    {m.text}
+                  </div>
                 </div>
-              </div>
-            ))}
-            <div ref={bottomRef}></div>
+              ))}
+              <div ref={bottomRef}></div>
+            </div>
           </div>
 
-          <div className="border-t border-gray-200 bg-white p-4 sticky bottom-0">
-            {InputBox}
+          <div className="border-t border-gray-200 bg-white p-4 sticky bottom-0 w-full">
+            <div className="w-full max-w-3xl mx-auto px-4">{InputBox}</div>
 
-            <div className="text-center text-xs text-gray-400 mt-3">
+            <div className="text-center text-[10px] sm:text-xs text-gray-400 mt-3">
               Luna AI is a{" "}
               <a
                 href="https://saclen.com"
@@ -139,7 +141,6 @@ export default function Home() {
               >
                 Sameer Rahman
               </a>
-              .
             </div>
           </div>
         </>
