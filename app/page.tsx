@@ -123,18 +123,9 @@ export default function Home() {
             <div className="w-full max-w-3xl mx-auto px-4">{InputBox}</div>
 
             <div className="text-center text-[10px] sm:text-xs text-gray-400 mt-3">
-              Luna AI is a{" "}
+              Luna AI developed by{" "}
               <a
-                href="https://saclen.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-black transition"
-              >
-                Saclen
-              </a>{" "}
-              product, developed by{" "}
-              <a
-                href="https://sameer.pro.bd"
+                href="https://sameerrahman.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-black transition"
